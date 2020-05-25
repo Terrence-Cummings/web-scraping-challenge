@@ -8,6 +8,7 @@
     <title>Mission to Mars</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<script src="https://www.w3schools.com/lib/w3.js"></script>
 
 <body>
     <div class="container-fluid">
@@ -16,6 +17,25 @@
             <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
         </div>
     </div>
+    <h2>Latest Mars News</h2>
+    <h3>{{mars.article[0].title}}</h3>
+    <p>{{mars.article[0].date}}</p>
+    <p>{{mars.article[0].summary}}</p>
+    <br>
+    <h2>Current Weather on Mars</h2>
+    <p>{{mars.weather}}</p>
+    <br>
+    <h2>Featured Mars Image</h2>
+    <img src="{{mars.featured_image}}" alt="Featured Image" style="height:600px;" />
+    <br>
+    <h2>Mars Facts</h2>
+    <div w3-include-html="mars_facts_table.html"></div>
+
+    <script>
+        w3.includeHTML();
+    </script>
+
+
 </body>
 
 </html>
