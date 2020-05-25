@@ -9,7 +9,11 @@ import time
 import sys
 import os
 
+
 def scrape_info():
+    from selenium.webdriver.chrome.options import Options
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")   
 
     #Because the search results at the URL are from Javascript use Selenium to scrape the data
 
@@ -24,7 +28,7 @@ def scrape_info():
 
     #Use Selenium to get the needed fields from the JS results
     #XPath for tags were found by right-clicking on the tag in the Chrome Inspector tool the Copy XPath
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=chrome_options)
     driver.get(url_mars_news)
 
     #Add a delay to give the scraper time to acquire the data
@@ -59,7 +63,7 @@ def scrape_info():
 
     #Setup Splinter Browsder and target URL
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
     url_jpl = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
 
     #Go to URL and navigate to page with full size image.
@@ -85,7 +89,7 @@ def scrape_info():
 
     #Use Selenium because Twitter tweets are populated by JS
     url_mars_tweet = 'https://twitter.com/marswxreport?lang=en'
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=chrome_options)
     driver.get(url_mars_tweet)
     time.sleep(1)
 
@@ -114,7 +118,7 @@ def scrape_info():
 
     #Setup Splinter Browsder and target URL
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
     mars_hemis_url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
 
     #Go to URL that summarizes the Mars hemispheres.
@@ -141,7 +145,7 @@ def scrape_info():
 
     #Setup Splinter browser
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
 
     #Initialize the list of dictionaries that will hold each hemisphere's title and link to full size image download
     mars_hems_dict_lst = []
