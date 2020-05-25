@@ -19,7 +19,7 @@ db = client.mars
 def home():
 
     # Find one record of data from the mongo database
-    mars_data = db.mars_info.find_one()
+    mars_data = db.mars_info.find_one(sort=[( '_id', pymongo.DESCENDING )])
 
     # Return template and data
     return render_template("index.html", mars=mars_data)
