@@ -2,6 +2,7 @@ from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import pymongo
 import scrape_mars
+import datetime
 
 # Create an instance of Flask
 app = Flask(__name__)
@@ -21,8 +22,15 @@ def home():
     # Find one record of data from the mongo database
     mars_data = db.mars_info.find_one(sort=[( '_id', pymongo.DESCENDING )])
 
+    #Get the date and time of the scrape from mongodb id
+    mongo_id = str(mars_data['_id'])
+    mongo_timestamp = mongo_id[0:8]
+    timestamp_int = int(mongo_timestamp, 16)
+    scrape_date = datetime.datetime.fromtimestamp(timestamp_int).date()
+    scrape_time = datetime.datetime.fromtimestamp(timestamp_int).time()
+
     # Return template and data
-    return render_template("index.html", mars=mars_data)
+    return render_template("index.html", mars=mars_data, date=scrape_date, time=scrape_time)
 
 
 # Route that will trigger the scrape function
@@ -37,7 +45,6 @@ def scrape():
     client = pymongo.MongoClient(conn)
 
     # Select database and collection to use
-    db = client.mars
     mars_info = db.mars_info
     mars_info.insert_one(mars_data)
 
