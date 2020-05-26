@@ -14,6 +14,7 @@ client = pymongo.MongoClient(conn)
 
 # Connect to a database. Will create one if not already available.
 db = client.mars
+newsindex = 0
 
 # Route to render index.html template using data from Mongo
 @app.route("/")
@@ -30,13 +31,13 @@ def home():
     scrape_time = datetime.datetime.fromtimestamp(timestamp_int).time()
 
     # Return template and data
-    return render_template("index.html", mars=mars_data, date=scrape_date, time=scrape_time)
+    return render_template("index.html", mars=mars_data, date=scrape_date, time=scrape_time, newsindex=newsindex)
 
 
 # Route that will trigger the scrape function
 @app.route("/scrape")
 def scrape():
-    
+
     #Do a new Mars data scrape
     mars_data = scrape_mars.scrape_info()
 
@@ -50,6 +51,28 @@ def scrape():
 
     # Redirect back to home page
     return redirect("/")
+
+#Route that will load the next news article
+@app.route("/morenews")
+def morenews():
+
+    global newsindex
+    newsindex += 1
+    if newsindex>39:
+        newsindex=0
+    
+    return redirect("/")
+
+#Route that will load the most recent news article
+@app.route("/latestnews")
+def latestnews():
+    
+    global newsindex
+    newsindex = 0
+    
+    return redirect("/")
+
+
 
 
 if __name__ == "__main__":

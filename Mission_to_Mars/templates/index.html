@@ -18,9 +18,12 @@
         </div>
     </div>
     <h2>Latest Mars News</h2>
-    <h3>{{mars.article[0].Title}}</h3>
-    <p>{{mars.article[0].Date}}</p>
-    <p>{{mars.article[0].Summary}}</p>
+    <h3>{{mars.article[newsindex].Title}}</h3>
+    <p>{{mars.article[newsindex].Date}}</p>
+    <p>{{mars.article[newsindex].Summary}}</p>
+    <p><a class="btn btn-primary btn-lg" href="/morenews" role="button">Article {{newsindex+1}} of 40. Click for next older news article.</a></p>
+    <p><a class="btn btn-primary btn-lg" href="/latestnews" role="button">Click for most recent news article</a></p>
+
     <br>
     <h2>Current Weather on Mars</h2>
     <p>{{mars.weather}}</p>
