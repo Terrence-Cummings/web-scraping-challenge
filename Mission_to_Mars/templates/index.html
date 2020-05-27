@@ -42,36 +42,10 @@
 
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Mars for Martians</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-
-        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                    <div class="dropdown-menu" aria-labelledby="dropdown01">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
     </nav>
 
     <main role="main">
@@ -94,12 +68,11 @@
                 <div class="col-md-4">
                     <h2>Latest Mars News</h2>
                     <p>The latest news from the <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest" target="_blank">NASA</a> Mars Exploration Program</p>
-                    <p><a class="btn btn-secondary" href="/morenews" role="button">Next older headline &raquo;</a></p>
-                    <p><a class="btn btn-secondary" href="/latestnews" role="button">Most recent headline &raquo;</a></p>
-
                     <h5>{{mars.article[newsindex].Title}}</h5>
                     <p>{{mars.article[newsindex].Date}}</p>
                     <p>{{mars.article[newsindex].Summary}}</p>
+                    <p><a class="btn btn-secondary" href="/morenews" role="button">Next older headline &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="/latestnews" role="button">Most recent headline &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <h2>Current Weather on Mars</h2>
@@ -216,7 +189,7 @@
         </div>
     </main>
     <footer class="container">
-        <p>&copy; Company 2017-2020</p>
+        <p>&copy; Data Bootcamp 2020</p>
     </footer>
 </body>
 
