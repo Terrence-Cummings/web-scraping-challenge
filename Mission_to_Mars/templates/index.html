@@ -5,11 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Jekyll v4.0.1">
     <title>Marvin the Martian</title>
 
     <link href="{{ url_for('static', filename='/assets/dist/css/bootstrap.css') }}" rel='stylesheet'>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 
     <style>
         .bd-placeholder-img {
@@ -91,11 +94,12 @@
                 <div class="col-md-4">
                     <h2>Latest Mars News</h2>
                     <p>The latest news from the <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest" target="_blank">NASA</a> Mars Exploration Program</p>
+                    <p><a class="btn btn-secondary" href="/morenews" role="button">Next older headline &raquo;</a></p>
+                    <p><a class="btn btn-secondary" href="/latestnews" role="button">Most recent headline &raquo;</a></p>
+
                     <h5>{{mars.article[newsindex].Title}}</h5>
                     <p>{{mars.article[newsindex].Date}}</p>
                     <p>{{mars.article[newsindex].Summary}}</p>
-                    <p><a class="btn btn-secondary" href="/morenews" role="button">Next older headline &raquo;</a></p>
-                    <p><a class="btn btn-secondary" href="/latestnews" role="button">Most recent headline &raquo;</a></p>
                 </div>
                 <div class="col-md-4">
                     <h2>Current Weather on Mars</h2>
@@ -109,7 +113,7 @@
                     <p>Impress your friends with your Mars knowledge! Here are some of the basics from <a href="https://space-facts.com/mars/" target="_blank">Space Facts</a>.</p>
                     <table border="1" class="dataframe">
                         <thead>
-                            <tr style="text-align: right;">
+                            <tr style="text-align: left;">
                                 <th>Parameter</th>
                                 <th>Fact</th>
                             </tr>
@@ -206,7 +210,6 @@
             <hr>
         </div>
     </main>
-
     <footer class="container">
         <p>&copy; Company 2017-2020</p>
     </footer>
