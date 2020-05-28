@@ -40,16 +40,22 @@
     </style>
 
     <style>
-        .carousel-control-prev-icon {
+        #myCarousel .carousel-control-prev-icon {
+            align-self: flex-end;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
         }
         
-        .carousel-control-next-icon {
+        #myCarousel .carousel-control-next-icon {
+            align-self: flex-end;
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
         }
         
-        .carousel-indicators li {
+        #myCarousel .carousel-indicators li {
             background-color: #000;
+        }
+        
+        #myCarousel .carousel-item {
+            height: 200px;
         }
     </style>
 </head>
@@ -80,7 +86,7 @@
                 <div class="col-md-8">
                     <div class="row" style="border: solid; margin-right: 2px; padding: 10px;">
                         <div class="container">
-                            <h2>5 Latest Mars News Artidles</h2>
+                            <h2>5 Latest Mars News Articles</h2>
                             <div class="container" style="border-bottom: 1px solid; margin-bottom: 10px;">
                                 <p>The latest news from the <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest" target="_blank">NASA</a> Mars Exploration
                                     Program
@@ -102,7 +108,9 @@
                                         <div class="container">
                                             <p>{{mars.article[0].Date}}</p>
                                         </div>
-                                        <p>{{mars.article[0].Summary}}</p>
+                                        <div class="container">
+                                            <p>{{mars.article[0].Summary}}</p>
+                                        </div>
                                     </div>
                                     <div class="carousel-item">
                                         <a href={{mars.article[1].URL}} target="_blank">
