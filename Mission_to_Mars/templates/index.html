@@ -74,11 +74,17 @@
                 <div class="col-md-8">
                     <div class="row" style="border: solid; margin-right: 2px; padding: 10px;">
                         <h2>Latest Mars News</h2>
-                        <p>The latest news from the <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest" target="_blank">NASA</a> Mars Exploration Program</p>
+                        <div class="container">
+                            <p>The latest news from the <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest" target="_blank">NASA</a> Mars Exploration
+                                Program
+                            </p>
+                        </div>
                         <a href={{mars.article[newsindex].URL}} target="_blank">
                             <h5>{{mars.article[newsindex].Title}}</h5>
                         </a>
-                        <p>{{mars.article[newsindex].Date}}</p>
+                        <div class="container">
+                            <p>{{mars.article[newsindex].Date}}</p>
+                        </div>
                         <p>{{mars.article[newsindex].Summary}}</p>
                         <p><a class="btn btn-secondary" href="/morenews" role="button">Next older headline &raquo;</a></p>
                         <p><a class="btn btn-secondary" href="/latestnews" role="button">Most recent headline &raquo;</a></p>
