@@ -41,6 +41,7 @@ def scrape_info():
     date_lst = []
     title_lst = []
     summary_lst = []
+    news_url_lst = []
 
     # loop over results and extract text from Selenium objects, add to each list
     for date in dates:
@@ -49,13 +50,14 @@ def scrape_info():
     for title in titles:
         article_title = title.text
         title_lst.append(article_title)
+        href = title.get_attribute('href')
+        news_url_lst.append(href)
     for summary in summarys:
         article_summary = summary.text
         summary_lst.append(article_summary)
 
     #Make dataframe of NASA Mars Latest News Articles
-    nasa_mars_articles_df = pd.DataFrame(list(zip(date_lst, title_lst, summary_lst)), columns =['Date', 'Title', 'Summary'])
-
+    nasa_mars_articles_df = pd.DataFrame(list(zip(date_lst, title_lst, summary_lst, news_url_lst)), columns =['Date', 'Title', 'Summary', 'URL'])
     driver.quit()
 
     #Convert to dictionary and confirm results of the scraping

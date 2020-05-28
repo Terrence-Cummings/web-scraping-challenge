@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="en">
 
+<!-- Notes of improvements to consider:
+1. Make news articles a carousel, make article title clickable, need to add URLs to the scrape
+2. Put weather and facts in col4 on right.
+3. Put News and Hemisphere carousels in col8 on left 
+4. Fix tweet to only grab posts by Weather-->
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -58,7 +64,7 @@
                 <p>Click the button below to update the data. Note this may take a Martian minute or two to complete. <br>Please be patient...it's a long way to Mars!</p>
                 <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Refresh Data &raquo;</a></p>
                 <p>Data last updated on {{date}} at {{time}}</p>
-                <p><a class="btn btn-primary btn-lg" href="{{mars.featured_image}}" target="_blank" role="button">View Full Size Image &raquo;</a></p>
+                <p><a class="btn btn-primary btn-lg" href="{{mars.featured_image}}" target="_blank" role="button">View Featured Image &raquo;</a></p>
             </div>
         </div>
 
@@ -68,7 +74,9 @@
                 <div class="col-md-4">
                     <h2>Latest Mars News</h2>
                     <p>The latest news from the <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest" target="_blank">NASA</a> Mars Exploration Program</p>
-                    <h5>{{mars.article[newsindex].Title}}</h5>
+                    <a href={{mars.article[newsindex].URL}} target="_blank">
+                        <h5>{{mars.article[newsindex].Title}}</h5>
+                    </a>
                     <p>{{mars.article[newsindex].Date}}</p>
                     <p>{{mars.article[newsindex].Summary}}</p>
                     <p><a class="btn btn-secondary" href="/morenews" role="button">Next older headline &raquo;</a></p>
@@ -147,31 +155,39 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <img src="{{mars.mars_hems[0].img_url}}" class="d-block w-100" alt="{{mars.mars_hems[0].title}}" style="height:550px;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{mars.mars_hems[0].title}}</h5>
-                                <p>Cerberus was the 3-headed dog that guarded the entrance to Hades</p>
-                            </div>
+                            <a href="{{mars.mars_hems[0].img_url}}" target="_blank">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{mars.mars_hems[0].title}}</h5>
+                                    <p>Cerberus was the 3-headed dog that guarded the entrance to Hades<br>(click to view image)</p>
+                                </div>
+                            </a>
                         </div>
                         <div class="carousel-item">
                             <img src="{{mars.mars_hems[1].img_url}}" class="d-block w-100" alt="{{mars.mars_hems[1].title}}" style="height:550px;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{mars.mars_hems[1].title}}</h5>
-                                <p>Schiaparelli was an Italian astronomer (1835-1910)</p>
-                            </div>
+                            <a href="{{mars.mars_hems[1].img_url}}" target="_blank">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{mars.mars_hems[1].title}}</h5>
+                                    <p>Schiaparelli was an Italian astronomer (1835-1910)<br>(click to view image)</p>
+                                </div>
+                            </a>
                         </div>
                         <div class="carousel-item">
                             <img src="{{mars.mars_hems[2].img_url}}" class="d-block w-100" alt="{{mars.mars_hems[2].title}}" style="height:550px;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{mars.mars_hems[2].title}}</h5>
-                                <p>Named after the Gulf of Sidra in the Mediterranean</p>
-                            </div>
+                            <a href="{{mars.mars_hems[2].img_url}}" target="_blank">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{mars.mars_hems[2].title}}</h5>
+                                    <p>Named after the Gulf of Sidra in the Mediterranean<br>(click to view image)</p>
+                                </div>
+                            </a>
                         </div>
                         <div class="carousel-item">
                             <img src="{{mars.mars_hems[3].img_url}}" class="d-block w-100" alt="{{mars.mars_hems[3].title}}" style="height:550px;">
-                            <div class="carousel-caption d-none d-md-block">
-                                <h5>{{mars.mars_hems[3].title}}</h5>
-                                <p>Latin for Mariner Valley (duh)</p>
-                            </div>
+                            <a href="{{mars.mars_hems[3].img_url}}" target="_blank">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>{{mars.mars_hems[3].title}}</h5>
+                                    <p>Latin for Mariner Valley (duh)<br>(click to view image)</p>
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
