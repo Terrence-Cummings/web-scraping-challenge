@@ -95,11 +95,19 @@ def scrape_info():
     driver.get(url_mars_tweet)
     time.sleep(1)
 
-    #Get the first Mars weather tweet using Xpath in Selenium
-    mars_weather_tweet_obj = driver.find_elements_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div/div/div/div[2]/section/div/div/div/div[1]/div/div/div/div/article/div/div[2]/div[2]/div[2]/div[1]/div/span')
+    #Find the first Twitter post from "Mars Weather" as there are other non-weather posts in this thread
+    find_weather = True
+    x=1
+    while find_weather:
+        mars_weather_tweet_obj = driver.find_elements_by_xpath('//*[@id="react-root"]/div/div/div[2]/main/div/div/div/div[1]/div/div/div/div/div[2]/section/div/div/div/div['+str(x)+']/div/div/div/div/article/div/div[2]/div[2]/div[2]/div[1]/div/span')
+        x+=1
 
-    #Extract the text of the tweet and replace line breaks
-    mars_weather_tweet = mars_weather_tweet_obj[0].text.replace('\n',', ')
+        #Extract the text of the tweet and replace line breaks
+        mars_weather_tweet = mars_weather_tweet_obj[0].text.replace('\n',', ')
+        lead_string = mars_weather_tweet[0:7]
+        #Posts from Mars Weather start with the string 'InSight'
+        if lead_string=='InSight':
+            find_weather=False
 
     #Close browser
     driver.quit()
