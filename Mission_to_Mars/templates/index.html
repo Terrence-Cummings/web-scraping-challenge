@@ -102,7 +102,7 @@
                                     {% for mars_news in mars.article %}
                                     <div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
                                         <a href={{mars_news.URL}} target="_blank">
-                                            <h5>{{mars_news.Title}}</h5>
+                                            <h5>Article {{loop.index}}: {{mars_news.Title}}</h5>
                                         </a>
                                         <div class="container">
                                             <p>{{mars_news.Date}}</p>
