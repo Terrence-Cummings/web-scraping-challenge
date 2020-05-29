@@ -31,6 +31,7 @@
         }
     </style>
 
+    <!-- Set white font for Jumbotron because background photos are dark -->
     <style type='text/css'>
         .jumbotron {
             background-image: url({{mars.featured_image}});
@@ -39,6 +40,7 @@
         }
     </style>
 
+    <!-- Color and relocate the carousel controls -->
     <style>
         #myCarousel .carousel-control-prev-icon {
             align-self: flex-end;
@@ -69,7 +71,7 @@
     </nav>
 
     <main role="main">
-
+        <!-- Setup the Jumbotron -->
         <div class="jumbotron">
             <div class="container">
                 <h1 class="display-3">Hello, Mars!</h1>
@@ -83,7 +85,9 @@
 
         <div class="container">
             <div class="row">
+                <!-- Column to hold News carousel and Hemispheres carousel -->
                 <div class="col-md-8">
+                    <!-- Mars News sectoin -->
                     <div class="row" style="border: solid; margin-right: 2px; padding: 10px;">
                         <div class="container">
                             <h2>40 Latest Mars News Articles</h2>
@@ -92,6 +96,7 @@
                                     Program
                                 </p>
                             </div>
+                            <!-- Create carousel for 40 news articles -->
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     {% for mars_news in mars.article %}
@@ -99,6 +104,7 @@
                                     {% endfor %}
                                 </ol>
                                 <div class="carousel-inner" style="margin-bottom: 10px;">
+                                    <!-- Use For loop to populate the carousel cards -->
                                     {% for mars_news in mars.article %}
                                     <div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
                                         <a href={{mars_news.URL}} target="_blank">
@@ -124,10 +130,12 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Section for Hempishere photos carousel -->
                     <div class="row" style="border: solid; margin-right: 2px; margin-top: 5px; padding: 10px;">
                         <div class='container' style="width: 575px;">
                             <h2 style='text-align: center; border-bottom: 1px solid #000;'>Mars Hemispheres</h2>
                             <p style='text-align: center;'>Like any planet, Mars has 4 hemispheres.<br>But Mars' hemispheres have cool names!</p>
+                            <!-- Use For loop to populate Hemispheres carousel with photos, links and captions -->
                             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     {% for hemisphere in mars.mars_hems %}
@@ -158,13 +166,16 @@
                         </div>
                     </div>
                 </div>
+                <!-- Column to hold Mars Weather and Mars Facts -->
                 <div class="col-md-4">
+                    <!-- Section for Mars Weather -->
                     <div class="row" style="border: solid; margin-left: 2px; padding: 10px;">
                         <h2 style="border-bottom: 1px solid;">Current Mars Weather</h2>
                         <p style="border-bottom: 1px solid;">If you're vacationing on Mars best head for the equator where temps can reach 68F at noon. Otherwise, dress warm as temps at the poles can drop to -243F! <br>Below is the most recent weather report from the <a href="https://twitter.com/marswxreport?lang=en"
                                 target="_blank">Mars Twitter</a> feed.</p>
                         <i>{{mars.weather}}</i>
                     </div>
+                    <!-- Section for Mars Facts -->
                     <div class="row" style="border: solid; margin-left: 2px; margin-top: 5px; padding: 10px;">
                         <h2 style="border-bottom: 1px solid;">Mars Facts</h2>
                         <p style="border-bottom: 1px solid;">Impress your friends with your Mars knowledge! Here are some of the basics from <a href="https://space-facts.com/mars/" target="_blank">Space Facts</a>.</p>
@@ -175,6 +186,7 @@
                                     <th>Fact</th>
                                 </tr>
                             </thead>
+                            <!-- Use For loop to populate Mars Facts table -->
                             <tbody>
                                 {% for factoid in mars.mars_facts %}
                                 <tr>
