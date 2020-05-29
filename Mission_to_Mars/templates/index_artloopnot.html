@@ -86,32 +86,79 @@
                 <div class="col-md-8">
                     <div class="row" style="border: solid; margin-right: 2px; padding: 10px;">
                         <div class="container">
-                            <h2>40 Latest Mars News Articles</h2>
+                            <h2>5 Latest Mars News Articles</h2>
                             <div class="container" style="border-bottom: 1px solid; margin-bottom: 10px;">
                                 <p>The latest news from the <a href="https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest" target="_blank">NASA</a> Mars Exploration
                                     Program
                                 </p>
                             </div>
+
+                            <!-- {% for item in inventory %} -->
+
                             <div id="myCarousel" class="carousel slide" data-ride="carousel">
+
+                                {% for article in mars.article %}
                                 <ol class="carousel-indicators">
-                                    {% for mars_news in mars.article %}
                                     <li data-target="#myCarousel" data-slide-to="{{loop.index}}" class="active"></li>
-                                    {% endfor %}
+                                    <!-- <li data-target="#myCarousel" data-slide-to="1"></li>
+                                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                                    <li data-target="#myCarousel" data-slide-to="4"></li> -->
                                 </ol>
+                                {% endfor %}
+
                                 <div class="carousel-inner" style="margin-bottom: 10px;">
-                                    {% for mars_news in mars.article %}
+
+                                    {% for article in mars.article %}
                                     <div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
-                                        <a href={{mars_news.URL}} target="_blank">
-                                            <h5>{{mars_news.Title}}</h5>
+                                        <a href={{article.URL}} target="_blank">
+                                            <h5>{{article.Title}}</h5>
                                         </a>
                                         <div class="container">
-                                            <p>{{mars_news.Date}}</p>
+                                            <p>{{article.Date}}</p>
                                         </div>
                                         <div class="container">
-                                            <p>{{mars_news.Summary}}</p>
+                                            <p>{{article.Summary}}</p>
                                         </div>
                                     </div>
                                     {% endfor %}
+
+                                    <!-- <div class="carousel-item">
+                                        <a href={{mars.article[1].URL}} target="_blank">
+                                            <h5>{{mars.article[1].Title}}</h5>
+                                        </a>
+                                        <div class="container">
+                                            <p>{{mars.article[1].Date}}</p>
+                                        </div>
+                                        <p>{{mars.article[1].Summary}}</p>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href={{mars.article[2].URL}} target="_blank">
+                                            <h5>{{mars.article[2].Title}}</h5>
+                                        </a>
+                                        <div class="container">
+                                            <p>{{mars.article[2].Date}}</p>
+                                        </div>
+                                        <p>{{mars.article[2].Summary}}</p>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href={{mars.article[3].URL}} target="_blank">
+                                            <h5>{{mars.article[3].Title}}</h5>
+                                        </a>
+                                        <div class="container">
+                                            <p>{{mars.article[3].Date}}</p>
+                                        </div>
+                                        <p>{{mars.article[3].Summary}}</p>
+                                    </div>
+                                    <div class="carousel-item">
+                                        <a href={{mars.article[4].URL}} target="_blank">
+                                            <h5>{{mars.article[4].Title}}</h5>
+                                        </a>
+                                        <div class="container">
+                                            <p>{{mars.article[4].Date}}</p>
+                                        </div>
+                                        <p>{{mars.article[4].Summary}}</p>
+                                    </div> -->
                                 </div>
                                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -122,6 +169,9 @@
                                     <span class="sr-only">Next</span>
                                 </a>
                             </div>
+
+                            <!-- {% endfor %} -->
+
                         </div>
                     </div>
                     <div class="row" style="border: solid; margin-right: 2px; margin-top: 5px; padding: 10px;">
@@ -129,12 +179,15 @@
                             <h2 style='text-align: center; border-bottom: 1px solid #000;'>Mars Hemispheres</h2>
                             <p style='text-align: center;'>Like any planet, Mars has 4 hemispheres.<br>But Mars' hemispheres have cool names!</p>
                             <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
+
+                                {% for hemisphere in mars.mars_hems %}
                                 <ol class="carousel-indicators">
-                                    {% for hemisphere in mars.mars_hems %}
                                     <li data-target="#carouselExampleCaptions" data-slide-to="{{loop.index}}" class="active"></li>
-                                    {% endfor %}
                                 </ol>
+                                {% endfor %}
+
                                 <div class="carousel-inner">
+
                                     {% for hemisphere in mars.mars_hems %}
                                     <div class="carousel-item{% if loop.index == 1 %} active{% endif %}">
                                         <img src="{{hemisphere.img_url}}" class="d-block w-100" alt="{{hemisphere.title}}" style="height:550px;">
@@ -145,6 +198,7 @@
                                         </a>
                                     </div>
                                     {% endfor %}
+
                                 </div>
                                 <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
