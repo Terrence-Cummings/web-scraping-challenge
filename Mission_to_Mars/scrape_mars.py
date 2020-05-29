@@ -113,11 +113,14 @@ def scrape_info():
     mars_facts_df.columns = ['Parameter', 'Fact']
 
     #Write as HTML table
-    mars_facts_df.to_html('mars_facts_table.html', index=False)
+    #mars_facts_df.to_html('mars_facts_table.html', index=False)
 
     #Convert df to dictionary
-    mars_facts_dict = dict(zip(mars_facts_df.Parameter, mars_facts_df.Fact))
+    mars_facts_dict = mars_facts_df.to_dict('records')
 
+    #Check results
+    mars_facts_dict
+    
     #Setup Splinter Browsder and target URL
     executable_path = {'executable_path': '/usr/local/bin/chromedriver'}
     browser = Browser('chrome', **executable_path, headless=True)
